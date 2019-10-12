@@ -8,21 +8,23 @@ Yana Hasson, Gül Varol, Dimitris Tzionas, Igor Kalevatykh, Michael J. Black,  I
 
 ## Install
 
-git clone https://github.com/ikalevatykh/mano_grasp
+```
+git clone https://github.com/ikalevatykh/mano_grasp.git
 cd mano_grasp
-python setup.py install --user --graspit_dir=PATH_TO_GRASPIT
+python setup.py install --user --graspit_dir=$GRASPIT
+```
 
 ## Model
 
-Model ManoHand will be automatically copied to PATH_TO_GRASPIT directory.
+Model ManoHand will be automatically copied to $GRASPIT directory.
 
 ## Generate grasps
 
-python -m mano_grasp.generate_grasps --path_out PATH_TO_DATASET
+    python -m mano_grasp.generate_grasps --path_out PATH_TO_DATASET
 
 Use 
 
-python -m mano_grasp.generate_grasps --help
+    python -m mano_grasp.generate_grasps --help
 
 to see all available options.
 
