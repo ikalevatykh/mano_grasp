@@ -1,12 +1,20 @@
 # Learning Joint Reconstruction of Hands and Manipulated Objects - ManoGrasp
 
-Porting the MANO hand model to GraspIt simulator
+Porting the [MANO](http://mano.is.tue.mpg.de/) hand model to [GraspIt!](http://graspit-simulator.github.io/) simulator
 
 Yana Hasson, Gül Varol, Dimitris Tzionas, Igor Kalevatykh, Michael J. Black,  Ivan Laptev, Cordelia Schmid, CVPR 2019
 
 - [Project page](https://hassony2.github.io/obman)
 
 ## Install
+
+### Setup ROS interface
+
+This package uses a ROS [interface](https://github.com/graspit-simulator/graspit_commander) for the GraspIt! simulator.
+
+To install and setup this interface follow the instructions at https://github.com/graspit-simulator/graspit_interface.
+
+### Install package
 
 ```
 git clone https://github.com/ikalevatykh/mano_grasp.git
@@ -16,11 +24,22 @@ python setup.py install --user --graspit_dir=$GRASPIT
 
 ## Model
 
-Model ManoHand will be automatically copied to $GRASPIT directory.
+Model ManoHand will be automatically copied to $GRASPIT directory during the installation.
+
+To copy a model without the code installation use the command:
+
+    python setup.py --copy_model_only --graspit_dir=$GRASPIT
+
 
 ## Generate grasps
 
-    python -m mano_grasp.generate_grasps --path_out PATH_TO_DATASET
+Start [ROS master](http://wiki.ros.org/roscore) in one terminal:
+
+    roscore
+
+Then in a second terminal start generator:
+
+    python -m mano_grasp.generate_grasps --models phone glass --path_out PATH_TO_DATASET
 
 Use 
 
