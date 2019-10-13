@@ -55,7 +55,7 @@ def main(args):
         exit(0)
 
     if not os.path.isdir(args.path_out):
-        os.path.makedirs(args.path_out, exist_ok=True)
+        os.makedirs(args.path_out)
 
     if args.models:
         models = args.models
