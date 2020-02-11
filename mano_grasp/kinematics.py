@@ -5,11 +5,8 @@ import os
 
 from math_utils import *
 
-CHAIN_NAME = collections.OrderedDict(chain0='index',
-                                     chain1='mid',
-                                     chain2='ring',
-                                     chain3='pinky',
-                                     chain4='thumb')
+CHAIN_NAME = collections.OrderedDict([('chain0', 'index'), ('chain1', 'mid'), ('chain2', 'ring'),
+                                      ('chain3', 'pinky'), ('chain4', 'thumb')])
 
 
 class Kinematics:
@@ -17,24 +14,23 @@ class Kinematics:
 
     def __init__(self, path=''):
         """Constructor
-        
+
         Keyword Arguments:
             path {str} -- path to to directory with a kinematics.json (default: {''})
         """
         with open(os.path.join(path, 'kinematics.json'), 'r') as f:
             data = json.load(f)
-        fingers = ['index', 'mid', 'pinky', 'ring', 'thumb']
         self._chains = [Chain(n, data) for n in CHAIN_NAME.values()]
         self._origin = data['origin']
 
     def getManoPose(self, xyz, quat, dofs):
         """Convert a hand pose from GraspIt to MANO
-        
+
         Arguments:
             xyz  -- root position, vector x,y,z
             quat -- root orientation, quaternion x,y,z,w
             dofs -- joint angles, 20-length vector
-        
+
         Returns:
             trans -- MANO hand's translation
             pose  -- MANO hand's pose
